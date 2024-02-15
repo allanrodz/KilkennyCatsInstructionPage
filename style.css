@@ -3,6 +3,7 @@ body, html {
     margin: 0;
     overflow: hidden;
 }
+
 body::before {
     content: '';
     position: absolute;
@@ -12,9 +13,19 @@ body::before {
     bottom: 0;
     background-image: url('https://myclub-live.s3.eu-west-1.amazonaws.com/cms-image/GKeUQ1B1x.jpg?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARYYS2TYKGSSX6FAL%2F20240215%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20240215T161932Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=6fbb861a4fda41bdd3d734c82552043fd4fb6f6f2030b97d905161d38861b48f');
     background-size: cover;
+    background-position: center; /* Ensures the image is centered */
     z-index: -1;
     animation: pulseBackground 5s infinite alternate;
 }
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+    body::before {
+        background-size: cover; /* Cover ensures the background covers the area */
+        background-position: center center; /* Adjusts the position to ensure the focus of the image is centered */
+    }
+}
+
 @keyframes pulseBackground {
     0% {
         transform: scale(1.0); /* Original size */
@@ -66,7 +77,7 @@ body::before {
 
         #click-message {
             position: absolute;
-            top: 80%; /* Center vertically */
+            top: 70%; /* Center vertically */
             left: 50%; /* Center horizontally */
             transform: translate(-50%, -50%); /* Adjust position to truly center */
             font-size: 24px; /* Adjust size as needed */
@@ -74,6 +85,7 @@ body::before {
             font-family: 'Inter', sans-serif;
             animation: fadeInOut 2s infinite; /* Apply the animation */
             z-index: 2; /* Ensure it's visible above the background */
+            font-weight: bold;
         }
         
         @keyframes fadeInOut {
